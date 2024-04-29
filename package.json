@@ -24,6 +24,7 @@
       "require": "./index.js",
       "esnext": "./index.esnext"
     },
+    "./": "./",
     "./ui-extensions": {
       "import": "./ui-extensions.mjs",
       "require": "./ui-extensions.js",
