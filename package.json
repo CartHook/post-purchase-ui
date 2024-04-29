@@ -3,8 +3,7 @@
   "version": "0.0.3",
   "description": "Post-purchase UI library",
   "publishConfig": {
-    "access": "public",
-    "@shopify:registry": "https://registry.npmjs.org"
+    "access": "public"
   },
   "repository": "https://github.com/CartHook/post-purchase-ui",
   "bugs": {

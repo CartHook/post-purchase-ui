@@ -5,3 +5,4 @@ node_modules
 /ui-extensions.*
 /webpack.*
 .DS_STORE
+.idea
