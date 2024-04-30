@@ -1,6 +1,14 @@
 {
-  "include": [],
-  "references": [
-    {"path": "./tsconfig.package.json"}
-  ]
+  "extends": "./tsconfig.package.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "outDir": "build/ts", // directory we're compiling out to
+    "declarationDir": "build/ts", // directory we're compiling type declarations out to
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+  }
 }

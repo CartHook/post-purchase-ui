@@ -2,6 +2,7 @@
   "name": "@carthook/post-purchase-ui-react",
   "version": "0.0.3",
   "description": "Post-purchase UI library",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CartHook/post-purchase-ui.git"
@@ -14,29 +15,30 @@
   },
   "author": "Shopify <dev@shopify.com>",
   "license": "MIT",
-  "main": "./build/index.js",
-  "module": "./build/index.mjs",
-  "esnext": "./build/index.esnext",
-  "types": "./types/index.d.ts",
+  "main": "build/index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js",
-      "esnext": "./index.esnext"
+      "import": "./build/index.mjs",
+      "require": "./build/index.js",
+      "esnext": "./build/index.esnext"
     },
     "./ui-extensions": {
-      "import": "./ui-extensions.mjs",
-      "require": "./ui-extensions.js",
-      "esnext": "./ui-extensions.esnext"
+      "import": "./build/ui-extensions.mjs",
+      "require": "./build/ui-extensions.js",
+      "esnext": "./build/ui-extensions.esnext"
     },
     "./webpack": {
-      "import": "./webpack.mjs",
-      "require": "./webpack.js",
-      "esnext": "./webpack.esnext"
+      "import": "./build/webpack.mjs",
+      "require": "./build/webpack.js",
+      "esnext": "./build/webpack.esnext"
     }
   },
   "files": [
     "src",
+    "dist",
     "build",
     "README.md",
     "package.json",
@@ -45,17 +47,22 @@
     "/webpack.*"
   ],
   "scripts": {
-    "test": "loom test",
-    "lint": "loom lint",
-    "type-check": "loom type-check",
-    "lbuild": "loom build",
-    "build": "npx tsc",
-    "install": "yarn run build",
-    "prepare": "yarn run build"
+    "build": "rollup --config",
+    "clean": "rm -rf build || true",
+    "precompile": "npm run clean",
+    "compile:esm": "tsc -p tsconfig.package.json",
+    "compile:mjs": "babel ./src --out-dir build --extensions '.ts,.tsx' --out-file-extension '.mjs'",
+    "compile:cjs": "babel ./src --out-dir build/cjs --extensions '.ts,.tsx' --out-file-extension '.cjs' --config-file ./babel.config.compat.cjs",
+    "compile": "run-p compile:*",
+    "install": "yarn run compile",
+    "prepare": "yarn run compile",
+    "prepublishOnly": "yarn run compile"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
   },
   "devDependencies": {
     "@quilted/react-testing": "^0.6.8",
-    "@quilted/sewing-kit-plugins": "^0.2.29",
     "@shopify/loom-cli": "^1.1.0",
     "@shopify/eslint-plugin": "^44.0.0",
     "@shopify/jest-dom-mocks": "^5.0.0",
@@ -64,17 +71,39 @@
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "babel-jest": "^29.7.0",
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-typescript": "^7.24.1",
+    "babel-plugin-replace-import-extension": "^1.1.4",
     "babel-loader": "^9.1.3",
     "babel-preset-shopify": "^21.0.0",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/polyfill": "^7.12.1",
+    "@beesley/tsconfig": "^3.0.0",
+    "@types/node": "^20.0.0",
+    "@types/jest": "^29.5.12",
+    "@rollup/plugin-sucrase": "^5.0.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "faker": "^4.1.0",
-    "preact": "^10.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
+    "rollup": "^4.17.2",
     "stylelint-config-shopify": "^7.4.0",
     "stylelint-use-nesting": "^5.1.1",
-    "webpack-cli": "^5.1.4"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.4.5",
+    "tsup": "^8.0.2",
+    "webpack": "^5.91.0",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.24.4",
+    "@babel/runtime": "^7.24.5",
     "@shopify/checkout-ui-extensions": "^0.27.3",
     "@shopify/css-utilities": "^3.1.0",
     "@shopify/post-purchase-ui-extensions": "^0.13.5",
@@ -82,6 +111,7 @@
     "@svgr/webpack": "^8.1.0",
     "babel-loader": "^9.1.3",
     "core-js": "^3.37.0",
+    "svg-url-loader": "^8.0.0",
     "css-loader": "^7.1.1",
     "file-loader": "^6.2.0",
     "hsluv": "^1.0.1",

@@ -6,9 +6,6 @@
     "outDir": "build/ts",
     "isolatedModules": true,
     "types": [
-      "jest",
-      "@quilted/react-testing/matchers",
-      "@quilted/react-testing/dom-matchers",
       "@types/css-font-loading-module"
     ],
     "composite": true,
