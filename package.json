@@ -2,29 +2,28 @@
   "name": "@carthook/post-purchase-ui-react",
   "version": "0.0.3",
   "description": "Post-purchase UI library",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CartHook/post-purchase-ui.git"
   },
-  "repository": "https://github.com/CartHook/post-purchase-ui",
   "bugs": {
     "url": "https://github.com/CartHook/post-purchase-ui/issues"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "author": "Shopify <dev@shopify.com>",
   "license": "MIT",
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "main": "index.js",
-  "module": "index.mjs",
-  "esnext": "index.esnext",
-  "types": "index.d.ts",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "esnext": "./build/index.esnext",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
       "import": "./index.mjs",
       "require": "./index.js",
       "esnext": "./index.esnext"
     },
-    "./": "./",
     "./ui-extensions": {
       "import": "./ui-extensions.mjs",
       "require": "./ui-extensions.js",
@@ -49,8 +48,10 @@
     "test": "loom test",
     "lint": "loom lint",
     "type-check": "loom type-check",
-    "build": "loom build",
-    "install": "loom build"
+    "lbuild": "loom build",
+    "build": "npx tsc",
+    "install": "yarn run build",
+    "prepare": "yarn run build"
   },
   "devDependencies": {
     "@quilted/react-testing": "^0.6.8",
@@ -69,10 +70,8 @@
     "preact": "^10.4.1",
     "prettier": "^2.0.5",
     "stylelint-config-shopify": "^7.4.0",
-    "stylelint-use-nesting": "^5.1.1"
-  },
-  "peerDependencies": {
-    "preact": "^10.20.2"
+    "stylelint-use-nesting": "^5.1.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "@babel/preset-env": "^7.24.4",
