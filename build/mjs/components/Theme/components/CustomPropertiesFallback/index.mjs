@@ -1,1 +1,0 @@
-export { CustomPropertiesFallback } from './CustomPropertiesFallback';

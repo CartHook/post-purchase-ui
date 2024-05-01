@@ -1,1 +1,0 @@
-export { VisuallyHidden, MaybeVisuallyHidden } from './VisuallyHidden';
