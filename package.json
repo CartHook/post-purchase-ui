@@ -14,20 +14,20 @@
   },
   "author": "Shopify <dev@shopify.com>",
   "license": "MIT",
-  "main": "build/cjs/index.js",
+  "main": "build/cjs/index.cjs",
   "module": "build/mjs/index.mjs",
   "exports": {
     ".": {
       "import": "./build/mjs/index.mjs",
-      "require": "./build/cjs/index.js"
+      "require": "./build/cjs/index.cjs"
     },
     "./ui-extensions": {
       "import": "./build/mjs/ui-extensions/index.mjs",
-      "require": "./build/cjs/ui-extensions/index.js"
+      "require": "./build/cjs/ui-extensions/index.cjs"
     },
     "./webpack": {
       "import": "./build/mjs/webpack-config.mjs",
-      "require": "./build/cjs/webpack-config.js"
+      "require": "./build/cjs/webpack-config.cjs"
     }
   },
   "files": [
