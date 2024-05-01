@@ -48,8 +48,6 @@
     "compile:mjs": "babel ./src/ --out-dir build/mjs --extensions '.ts,.tsx' --out-file-extension '.mjs'",
     "compile:cjs": "babel ./src --out-dir build/cjs --extensions '.ts,.tsx' --out-file-extension '.cjs' --config-file ./babel.config.compat.cjs",
     "compile": "run-p compile:*",
-    "install": "yarn run compile",
-    "prepare": "yarn run compile",
     "prepublishOnly": "yarn run compile"
   },
   "peerDependencies": {

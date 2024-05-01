@@ -1,0 +1,1 @@
+export { AppContext, useAppContext, useTranslate, useLinkComponent } from './AppContext';
