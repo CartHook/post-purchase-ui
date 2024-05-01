@@ -15,11 +15,11 @@ module.exports = function configureBabel(api) {
 
 
 
-  const plugins = [
-    [
-      'babel-plugin-replace-import-extension',
-      { extMapping: { '.js': '.cjs' } },
-    ],
-  ];
-  return { presets, plugins };
+  // const plugins = [
+  //   [
+  //     'babel-plugin-replace-import-extension',
+  //     { extMapping: { '.js': '.cjs' } },
+  //   ],
+  // ];
+  return { presets };
 };

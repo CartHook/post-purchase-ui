@@ -14,20 +14,20 @@
   },
   "author": "Shopify <dev@shopify.com>",
   "license": "MIT",
-  "main": "build/cjs/index.cjs",
+  "main": "build/cjs/index.js",
   "module": "build/mjs/index.mjs",
   "exports": {
     ".": {
       "import": "./build/mjs/index.mjs",
-      "require": "./build/cjs/index.cjs"
+      "require": "./build/cjs/index.js"
     },
     "./ui-extensions": {
       "import": "./build/mjs/ui-extensions/index.mjs",
-      "require": "./build/cjs/ui-extensions/index.cjs"
+      "require": "./build/cjs/ui-extensions/index.js"
     },
     "./webpack": {
       "import": "./build/mjs/webpack-config.mjs",
-      "require": "./build/cjs/webpack-config.cjs"
+      "require": "./build/cjs/webpack-config.js"
     }
   },
   "files": [
@@ -46,7 +46,7 @@
     "precompile": "npm run clean",
     "build": "webpack --config=./webpack.build.js",
     "compile:mjs": "babel ./src/ --out-dir build/mjs --extensions '.ts,.tsx' --out-file-extension '.mjs'",
-    "compile:cjs": "babel ./src --out-dir build/cjs --extensions '.ts,.tsx' --out-file-extension '.cjs' --config-file ./babel.config.compat.cjs",
+    "compile:cjs": "babel ./src --out-dir build/cjs --extensions '.ts,.tsx' --out-file-extension '.js' --config-file ./babel.config.compat.cjs",
     "compile": "run-p compile:*",
     "prepublishOnly": "yarn run compile"
   },

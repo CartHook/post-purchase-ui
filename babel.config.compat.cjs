@@ -14,11 +14,11 @@ module.exports = function configureBabel(api) {
     ['@babel/preset-typescript'],
   ];
 
-  const plugins = [
-    [
-      'babel-plugin-replace-import-extension',
-      { extMapping: { '.js': '.cjs' } },
-    ],
-  ];
-  return { presets, plugins };
+  // const plugins = [
+  //   [
+  //     'babel-plugin-replace-import-extension',
+  //     { extMapping: { '.js': '.cjs' } },
+  //   ],
+  // ];
+  return { presets };
 };
