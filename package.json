@@ -1,6 +1,6 @@
 {
   "name": "@carthook/post-purchase-ui-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Post-purchase UI library",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
     "url": "https://github.com/CartHook/post-purchase-ui/issues"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/CartHook"
   },
   "author": "Shopify <dev@shopify.com>",
   "license": "MIT",
