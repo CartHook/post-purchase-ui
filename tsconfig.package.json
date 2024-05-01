@@ -6,6 +6,7 @@
     "outDir": "build/ts",
     "isolatedModules": true,
     "types": [
+      "node",
       "@types/css-font-loading-module"
     ],
     "composite": true,

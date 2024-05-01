@@ -16,24 +16,19 @@
   "author": "Shopify <dev@shopify.com>",
   "license": "MIT",
   "main": "build/index.js",
-  "module": "index.mjs",
-  "esnext": "index.esnext",
-  "types": "index.d.ts",
+  "module": "build/index.mjs",
   "exports": {
     ".": {
-      "import": "./build/index.mjs",
-      "require": "./build/index.js",
-      "esnext": "./build/index.esnext"
+      "import": "./build/mjs/index.mjs",
+      "require": "./build/cjs/index.js"
     },
     "./ui-extensions": {
-      "import": "./build/ui-extensions.mjs",
-      "require": "./build/ui-extensions.js",
-      "esnext": "./build/ui-extensions.esnext"
+      "import": "./build/mjs/ui-extensions/index.mjs",
+      "require": "./build/cjs/ui-extensions/index.js"
     },
     "./webpack": {
-      "import": "./build/webpack.mjs",
-      "require": "./build/webpack.js",
-      "esnext": "./build/webpack.esnext"
+      "import": "./build/mjs/webpack-config.mjs",
+      "require": "./build/cjs/webpack-config.js"
     }
   },
   "files": [
@@ -47,11 +42,11 @@
     "/webpack.*"
   ],
   "scripts": {
-    "build": "rollup --config",
+    "robuild": "rollup --config",
     "clean": "rm -rf build || true",
     "precompile": "npm run clean",
-    "compile:esm": "tsc -p tsconfig.package.json",
-    "compile:mjs": "babel ./src --out-dir build --extensions '.ts,.tsx' --out-file-extension '.mjs'",
+    "build": "webpack --config=./webpack.build.js",
+    "compile:mjs": "babel ./src/ --out-dir build/mjs --extensions '.ts,.tsx' --out-file-extension '.mjs'",
     "compile:cjs": "babel ./src --out-dir build/cjs --extensions '.ts,.tsx' --out-file-extension '.cjs' --config-file ./babel.config.compat.cjs",
     "compile": "run-p compile:*",
     "install": "yarn run compile",
@@ -73,7 +68,8 @@
     "babel-jest": "^29.7.0",
     "@babel/cli": "^7.24.5",
     "@babel/core": "^7.24.5",
-    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
     "babel-plugin-replace-import-extension": "^1.1.4",
     "babel-loader": "^9.1.3",
