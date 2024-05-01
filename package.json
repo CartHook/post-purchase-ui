@@ -2,7 +2,6 @@
   "name": "@carthook/post-purchase-ui-react",
   "version": "0.0.3",
   "description": "Post-purchase UI library",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CartHook/post-purchase-ui.git"
